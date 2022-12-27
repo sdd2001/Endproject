@@ -6,11 +6,12 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 
 class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     companion object {
         private val DATABASE_VERSION = 1
-        private val DATABASE_NAME = "GamesDatabase"
+        private val DATABASE_NAME = "GamesDatabase.db"
 
         private val TABLE_CONTACTS = "GamesTable"
 
@@ -41,20 +42,23 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
 
     }
 
-    @SuppressLint("Range")
-    fun viewGames(): ArrayList<Game> {
-        val gamesList: ArrayList<Game> = ArrayList<Game>()
+    fun getAllGames(): ArrayList<Game> {
+        Log.e("Position", "Entered getAllGames() function")
 
-        val selectQuery = "SELECT * FROM $TABLE_CONTACTS"
-
+        val gamesList: ArrayList<Game> = ArrayList()
+        val query = "SELECT * FROM $TABLE_CONTACTS"
         val db = this.readableDatabase
-        var cursor: Cursor? = null
 
-        try  {
-            cursor = db.rawQuery(selectQuery, null)
+        val cursor: Cursor?
 
-        } catch (e: SQLiteException) {
-            db.execSQL(selectQuery)
+        try {
+            cursor = db.rawQuery(query, null)
+            Log.e("Position", "In try block")
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+            db.execSQL(query)
+            Log.e("Position", "In catch block")
             return ArrayList()
 
         }
@@ -67,13 +71,27 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
         var year: Int
 
         if (cursor.moveToFirst()) {
+            Log.e("Position", "Entered if statement")
             do {
-                id = cursor.getInt(cursor.getColumnIndex(KEY_ID))
-                name = cursor.getString(cursor.getColumnIndex(KEY_NAME))
-                descr = cursor.getString(cursor.getColumnIndex(KEY_DESCRIPTION))
-                genre = cursor.getString(cursor.getColumnIndex(KEY_GENRE))
-                developer = cursor.getString(cursor.getColumnIndex(KEY_DEVELOPER))
-                year = cursor.getInt(cursor.getColumnIndex(KEY_YEAR))
+                Log.e("Position", "Entered do statement")
+                id = cursor.getInt(cursor.getColumnIndexOrThrow(KEY_ID))
+                name = cursor.getString(cursor.getColumnIndexOrThrow(KEY_NAME))
+                descr = cursor.getString(cursor.getColumnIndexOrThrow(KEY_DESCRIPTION))
+                genre = cursor.getString(cursor.getColumnIndexOrThrow(KEY_GENRE))
+                developer = cursor.getString(cursor.getColumnIndexOrThrow(KEY_DEVELOPER))
+                year = cursor.getInt(cursor.getColumnIndexOrThrow(KEY_YEAR))
+
+                val game = Game(
+                    id = id,
+                    name = name,
+                    descr = descr,
+                    genre = genre,
+                    developer = developer,
+                    year = year
+                )
+
+                gamesList.add(game)
+                Log.e("Position", "End of do statement")
 
             } while (cursor.moveToNext())
 

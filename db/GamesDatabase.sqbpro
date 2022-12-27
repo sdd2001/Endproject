@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/seand/Documents/School/2022-2023/App_Dev/endproject/db/GamesDatabase.db" readonly="0" foreign_keys="" case_sensitive_like="" temp_store="" wal_autocheckpoint="" synchronous=""/><attached/><window><main_tabs open="structure browser pragmas query" current="1"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="1062"/><column_width id="4" width="0"/></tab_structure><tab_browse><current_table name="0,0:"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1">INSERT INTO GamesTable (name, description, genre, developer, year) VALUES 
+(&quot;Call of Duty MW2&quot;, &quot;The latest installation of the Call of Duty franchise&quot;, &quot;First Person Shooter&quot;, &quot;Infinity Ward&quot;, 2022),
+(&quot;SUPER HOT&quot;, &quot;Time moves when you move!&quot;, &quot;SUPERHOT Team&quot;, &quot;First Person Shooter&quot;, 2016),
+(&quot;Portal&quot;, &quot;A puzzle game with an interesting twist&quot;, &quot;Puzzle&quot;, &quot;Valve Corporation&quot;, 2007),
+(&quot;Star Wars: Battlefront 2&quot;, &quot;Play out space battles from all Star Wars movies (OG &amp; Prequel)&quot;, &quot;LucasArts&quot;, &quot;Third Person Shooter&quot;, 2005),
+(&quot;Pokemon Scarlet&quot;, &quot;Enjoy the 9th generation of pokemon whilst exploring Paldea&quot;, &quot;Game Freak&quot;, &quot;Role Playing Game&quot;, 2022),
+(&quot;Satisfactory&quot;, &quot;Build a factory on an alien planet&quot;, &quot;Coffee Stain Studios&quot;, &quot;Sandbox&quot;, 2019),
+(&quot;Grand Theft Auto 5&quot;, &quot;5th installment of the GTA series, set in Los Santos&quot;, &quot;Rockstar Games&quot;, &quot;Open Word Adventure&quot;, 2013),
+(&quot;Hitman 3&quot;, &quot;Last installment of the Hitman trilogy&quot;, &quot;IO Interactive&quot;, &quot;Stealthgame&quot;, 2021),
+(&quot;Pay Day 2&quot;, &quot;CO-OP crime game set in Washington DC&quot;, &quot;Overkill Software&quot;, &quot;First Person Shooter&quot;, 2013),
+(&quot;Read Dead Redemption 2&quot;, &quot;An award winning western by the makers of the GTA series&quot;, &quot;Rockstar Games&quot;, &quot;Open World Adventure&quot;, 2019),
+(&quot;Wolfenstein: The New Order&quot;, &quot;7th installment of the wolfenstein franchise&quot;, &quot;MachineGames&quot;, &quot;First Person Shooter&quot;, 2014),
+(&quot;The Witcher 3: Wild Hunt&quot;, &quot;An all time epic game set in a fantasy medieval land&quot;, &quot;CD Projekt RED&quot;, &quot;Open World Adventure&quot;, 2016),
+(&quot;We Were Here&quot;, &quot;The first installment of a co-op puzzle game series&quot;, &quot;Total Mayhem Games&quot;, &quot;Puzzle&quot;, 2017),
+(&quot;House Flipper&quot;, &quot;Flip houses, sell them and start the cycle again&quot;, &quot;Frozen District&quot;, &quot;Simulation game&quot;, 2018)</sql><current_tab id="0"/></tab_sql></sqlb_project>

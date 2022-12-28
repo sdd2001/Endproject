@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">endproject</string>
+    <string name="description_header"><u>Description</u></string>
+    <string name="developer_header"><u>Developer</u></string>
+    <string name="genre_header"><u>Genre</u></string>
+    <string name="year_header"><u>Year</u></string>
 </resources>

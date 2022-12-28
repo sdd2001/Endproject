@@ -42,6 +42,50 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
 
     }
 
+    fun getGameById(id: Int): Game {
+        var game: Game = Game(0, "", "", "", "", 0)
+
+        val query = "SELECT * FROM $TABLE_CONTACTS WHERE $KEY_ID = $id"
+        val db = this.readableDatabase
+
+        val cursor: Cursor?
+
+        try {
+            cursor = db.rawQuery(query, null)
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+            db.execSQL(query)
+            return game
+
+        }
+
+        var _id: Int
+        var name: String
+        var descr: String
+        var genre: String
+        var developer: String
+        var year: Int
+
+        if (cursor.moveToFirst()) {
+            _id = cursor.getInt(cursor.getColumnIndexOrThrow(KEY_ID))
+            name = cursor.getString(cursor.getColumnIndexOrThrow(KEY_NAME))
+            descr = cursor.getString(cursor.getColumnIndexOrThrow(KEY_DESCRIPTION))
+            genre = cursor.getString(cursor.getColumnIndexOrThrow(KEY_GENRE))
+            developer = cursor.getString(cursor.getColumnIndexOrThrow(KEY_DEVELOPER))
+            year = cursor.getInt(cursor.getColumnIndexOrThrow(KEY_YEAR))
+
+            game = Game(_id, name, descr, genre, developer, year)
+
+        }
+
+        cursor.close()
+        db.close()
+
+        return game
+
+    }
+
     fun getAllGames(): ArrayList<Game> {
         Log.e("Position", "Entered getAllGames() function")
 
@@ -96,6 +140,9 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
             } while (cursor.moveToNext())
 
         }
+
+        cursor.close()
+        db.close()
 
         return gamesList
 

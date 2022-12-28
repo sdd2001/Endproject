@@ -13,10 +13,22 @@ import com.example.endproject.classes.Game
 
 class GameAdapter (private val context: Context, private val games: ArrayList<Game>) :
 RecyclerView.Adapter<GameAdapter.ViewHolder>() {
+    private lateinit var m_listener: onGameClickListener
+
+    interface onGameClickListener {
+        fun onGameClick(position: Int)
+
+    }
+
+    fun setOnGameClickListener(listener: onGameClickListener) {
+        m_listener = listener
+
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : ViewHolder {
-        return ViewHolder(LayoutInflater
-            .from(context)
-            .inflate(R.layout.game_row, parent, false))
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.game_row, parent, false)
+
+        return ViewHolder(view, m_listener)
 
     }
 
@@ -33,9 +45,17 @@ RecyclerView.Adapter<GameAdapter.ViewHolder>() {
 
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View, listener: onGameClickListener) : RecyclerView.ViewHolder(view) {
         val tvName: TextView = view.findViewById(R.id.tvName)
         val tvYear: TextView = view.findViewById(R.id.tvYear)
+
+        init {
+            view.setOnClickListener {
+                listener.onGameClick(adapterPosition)
+
+            }
+
+        }
 
     }
 

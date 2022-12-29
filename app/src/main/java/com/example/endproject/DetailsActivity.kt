@@ -2,9 +2,7 @@ package com.example.endproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
 import com.example.endproject.classes.DatabaseHandler
 import com.example.endproject.classes.Game
 

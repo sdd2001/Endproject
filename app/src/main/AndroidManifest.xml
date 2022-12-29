@@ -32,6 +32,11 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <provider
+            android:authorities="com.example.endproject"
+            android:name=".GameProvider"
+            android:exported="false">
+        </provider>
     </application>
 
 </manifest>

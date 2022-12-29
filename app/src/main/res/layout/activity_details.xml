@@ -12,11 +12,7 @@
         android:id="@+id/tvDetailsName"
         android:layout_width="match_parent"
         android:layout_height="128dp"
-        android:background="@color/purple_500"
-        android:padding="10dp"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:textSize="24sp" />
+        style="@style/detailsPageHeader" />
 
     <androidx.cardview.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -36,19 +32,14 @@
                 android:id="@+id/decrHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
                 android:text="@string/description_header"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:background="@color/purple_500" />
+                style="@style/detailsCardHeader" />
 
             <TextView
                 android:id="@+id/tvDetailsDescr"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:textSize="18sp" />
+                style="@style/detailsCardText" />
 
 
         </LinearLayout>
@@ -72,19 +63,14 @@
                 android:id="@+id/devHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
                 android:text="@string/developer_header"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:background="@color/purple_500" />
+                style="@style/detailsCardHeader" />
 
             <TextView
                 android:id="@+id/tvDetailsDeveloper"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:textSize="18sp" />
+                style="@style/detailsCardText" />
 
 
         </LinearLayout>
@@ -108,19 +94,14 @@
                 android:id="@+id/genreHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
                 android:text="@string/genre_header"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:background="@color/purple_500" />
+                style="@style/detailsCardHeader" />
 
             <TextView
                 android:id="@+id/tvDetailsGenre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:textSize="18sp" />
+                style="@style/detailsCardText" />
 
 
         </LinearLayout>
@@ -144,19 +125,14 @@
                 android:id="@+id/yearHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
                 android:text="@string/year_header"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:background="@color/purple_500" />
+                style="@style/detailsCardHeader" />
 
             <TextView
                 android:id="@+id/tvDetailsYear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:textSize="18sp" />
+                style="@style/detailsCardText" />
 
 
         </LinearLayout>

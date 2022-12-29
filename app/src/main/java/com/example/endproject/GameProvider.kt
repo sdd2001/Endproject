@@ -78,7 +78,7 @@ class GameProvider : ContentProvider() {
             GAMES -> {
                 if (lOrder.isEmpty()) lOrder = "_id ASC"
 
-            } GAME_ID -> lCondition += "_id ${uri?.lastPathSegment}"
+            } GAME_ID -> lCondition += "_id = ${uri?.lastPathSegment}"
             else -> lOrder = "_id ASC"
 
         }

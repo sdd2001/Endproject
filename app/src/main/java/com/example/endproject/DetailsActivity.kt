@@ -1,5 +1,7 @@
 package com.example.endproject
 
+import android.content.ContentUris
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
@@ -25,11 +27,23 @@ class DetailsActivity : AppCompatActivity() {
 
         initView()
         dbHandler = DatabaseHandler(this)
-        //var cursor = contentResolver.query(Game.CONTENT_URI, arrayOf("_id", "name", "description", "genre", "developer", "year"), null, null, null)
         if (extras != null) {
+            game = Game(0, "Not Found", "Not Found", "Not Found", "Not Found", 2022)
             val id = extras.getInt("id")
+            val singleUri: Uri = ContentUris.withAppendedId(Game.CONTENT_URI, id.toLong())
+            var cursor = contentResolver.query(singleUri, arrayOf("_id", "name", "description", "genre", "developer", "year"), null, null, null)
 
-            game = dbHandler.getGameById(id)
+            if (cursor?.moveToFirst()!!) {
+                game = Game(
+                    id = cursor.getInt(0),
+                    name = cursor.getString(1),
+                    descr = cursor.getString(2),
+                    genre = cursor.getString(3),
+                    developer = cursor.getString(4),
+                    year = cursor.getInt(5)
+                )
+
+            }
 
             tvName.text = game.name
             tvDesc.text = game.descr

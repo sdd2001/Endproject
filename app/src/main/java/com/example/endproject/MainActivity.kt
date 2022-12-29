@@ -26,8 +26,34 @@ class MainActivity : AppCompatActivity() {
         initView()
         dbHandler = DatabaseHandler(this)
 
-        btnShow.setOnClickListener { attachToRec() }
+        var cursor = contentResolver.query(Game.CONTENT_URI, arrayOf("_id", "name", "description", "genre", "developer", "year"), null, null, null)
 
+        btnShow.setOnClickListener {
+            Log.e("Position", "In OnClick")
+            var gamesList: ArrayList<Game> = ArrayList()
+
+            if (cursor?.moveToFirst()!!) {
+                Log.e("Position", "Entered if statement")
+                do {
+
+                    val game = Game(
+                        id = cursor.getInt(0),
+                        name = cursor.getString(1),
+                        descr = cursor.getString(2),
+                        genre = cursor.getString(3),
+                        developer = cursor.getString(4),
+                        year = cursor.getInt(5)
+                    )
+
+                    gamesList.add(game)
+
+                } while (cursor.moveToNext())
+
+            }
+
+            attachToRec(gamesList)
+
+        }
 
     }
 
@@ -37,18 +63,11 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun getGamesList(): ArrayList<Game> {
-        m_gamesList = dbHandler.getAllGames()
-        Log.e("Amount of games", "${ m_gamesList.size }")
-
-        return m_gamesList
-
-    }
-
-    private fun attachToRec() {
+    private fun attachToRec(games: ArrayList<Game>) {
         rvGamesList.layoutManager = LinearLayoutManager(this)
 
-        val gameAdapter = GameAdapter(this, getGamesList())
+        val gameAdapter = GameAdapter(this, games)
+        m_gamesList = games
 
         rvGamesList.adapter = gameAdapter
         gameAdapter.setOnGameClickListener(object: GameAdapter.onGameClickListener{
@@ -62,7 +81,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onGameClicked(position: Int) {
-        val id: Int = m_gamesList.get(position).id;
+        val id: Int = m_gamesList[position].id;
         val intent = Intent(this, DetailsActivity::class.java)
         intent.putExtra("id", id)
         startActivity(intent)

@@ -25,9 +25,10 @@ class DetailsActivity : AppCompatActivity() {
 
         initView()
         dbHandler = DatabaseHandler(this)
-
+        //var cursor = contentResolver.query(Game.CONTENT_URI, arrayOf("_id", "name", "description", "genre", "developer", "year"), null, null, null)
         if (extras != null) {
             val id = extras.getInt("id")
+
             game = dbHandler.getGameById(id)
 
             tvName.text = game.name

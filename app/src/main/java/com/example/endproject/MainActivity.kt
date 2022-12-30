@@ -11,10 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.endproject.adapters.GameAdapter
 import com.example.endproject.classes.DatabaseHandler
 import com.example.endproject.classes.Game
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
     private lateinit var rvGamesList: RecyclerView
-    private lateinit var btnShow: Button
+    private lateinit var btnShow: FloatingActionButton
 
     private lateinit var dbHandler: DatabaseHandler
     private lateinit var m_gamesList: ArrayList<Game>
@@ -59,7 +60,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initView() {
         rvGamesList = findViewById(R.id.rvGames)
-        btnShow = findViewById(R.id.btnShow)
+        btnShow = findViewById(R.id.fabLoad)
 
     }
 

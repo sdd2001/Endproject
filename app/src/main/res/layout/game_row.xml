@@ -38,8 +38,8 @@
                 android:gravity="end"
                 android:padding="10dp"
                 android:textSize="16sp"
-                android:background="@color/teal_200"
-                android:textColor="@color/black"
+                android:background="@color/tertiary_600"
+                android:textColor="@color/white"
                 tools:text="Year" />
 
 

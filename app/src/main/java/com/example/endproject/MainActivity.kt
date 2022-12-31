@@ -11,9 +11,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.endproject.adapters.GameAdapter
 import com.example.endproject.classes.DatabaseHandler
 import com.example.endproject.classes.Game
+import com.example.endproject.databinding.ActivityDetailsBinding
+import com.example.endproject.databinding.ActivityMainBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+
     private lateinit var rvGamesList: RecyclerView
     private lateinit var btnShow: FloatingActionButton
 
@@ -22,7 +26,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initView()
         dbHandler = DatabaseHandler(this)

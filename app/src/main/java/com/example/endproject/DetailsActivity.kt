@@ -7,8 +7,11 @@ import android.os.Bundle
 import android.widget.TextView
 import com.example.endproject.classes.DatabaseHandler
 import com.example.endproject.classes.Game
+import com.example.endproject.databinding.ActivityDetailsBinding
 
 class DetailsActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityDetailsBinding
+
     private lateinit var tvName: TextView
     private lateinit var tvDesc: TextView
     private lateinit var tvDev: TextView
@@ -20,7 +23,8 @@ class DetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_details)
+        binding = ActivityDetailsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val intent = intent
         val extras = intent.extras
